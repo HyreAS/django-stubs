@@ -46,7 +46,9 @@ MANAGER_CLASSES = {
 
 
 def get_models_file(app_name: str, all_modules: typing.Dict[str, MypyFile]) -> Optional[MypyFile]:
-    models_module = '.'.join([app_name, 'models'])
+    app_name = app_name.split('__')
+    app_name.append('models')
+    models_module = '.'.join(app_name)
     return all_modules.get(models_module)
 
 
